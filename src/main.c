@@ -17,13 +17,16 @@ static void	init_data(t_map *map);
 int	main(int argc, char *argv[])
 {
 	t_map	map;
+	mlx_t	*mlx;
 
 	init_data(&map);
 	if (check_arg(argc, argv))
 		exit(1);
 	if (charge_check_map(argv[1], &map))
 		exit(1);
-	
+	mlx = mlx_init(256, 256,"so_long",true);
+	mlx_loop(mlx);
+	mlx_terminate(mlx);
 }
 
 static void	init_data(t_map *map)

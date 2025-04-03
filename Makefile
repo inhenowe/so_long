@@ -33,26 +33,26 @@ RMDIR = ./obj
 
 # nombres y dependencias #
 MYPROG = so_long
-MLX42MA= $(MLX)/build/libmlx42.a
+MLX42MA= $(MLX)/build/libmlx42.a -ldl -lglfw -pthread -lm
 LIB42 = $(UTILS)/libft.a
 #=======================================#
 
 # Archivos fuente y crear objetos   ====================#
 FILES = $(addprefix $(SRC)/,main.c\
-							Utilities.c\
-							Utilities_2.c\
-							load_images.c\
-							first_cheking.c\
-							key_buildings.c\
-							error_check_free.c\
-							read_and_checkmap.c)
+													Utilities.c\
+													Utilities_2.c\
+													load_images.c\
+													first_cheking.c\
+													key_buildings.c\
+													error_check_free.c\
+													read_and_checkmap.c)
 OBJS = $(addprefix $(RMDIR)/, $(notdir $(FILES:.c=.o)))
 #=======================================================#
 
 # Compiladores y flags    ==========================================================#
 CC = cc
 LIBCC = ar rcs
-CFLAGS = -Wall -Werror -Wextra -g
+CFLAGS = -Wall -Werror -Wextra -g -Wunreachable-code -Ofast
 INCFLAGS = -I$(HEADERS)
 SANIT = -fsanitize=address,undefined
 #===================================================================================#
