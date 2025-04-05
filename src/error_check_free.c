@@ -6,7 +6,7 @@
 /*   By: aleortiz <aleortiz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/25 18:28:37 by aleortiz          #+#    #+#             */
-/*   Updated: 2025/03/31 19:02:55 by aleortiz         ###   ########.fr       */
+/*   Updated: 2025/04/04 14:22:48 by aleortiz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,5 +22,23 @@ void	free_pointer(char **spl)
 	while (spl[itera])
 		free(spl[itera++]);
 	free(spl);
-	spl = NULL;
+}
+
+void	exitw(t_map *map)
+{
+	mlx_delete_texture(map->texture->rock);
+	mlx_delete_texture(map->texture->exit);
+	mlx_delete_texture(map->texture->ply);
+	mlx_delete_texture(map->texture->floor);
+	mlx_delete_texture(map->texture->cllt);
+	mlx_delete_image(map->mlx, map->images->rock);
+	mlx_delete_image(map->mlx, map->images->exit);
+	mlx_delete_image(map->mlx, map->images->ply);
+	mlx_delete_image(map->mlx, map->images->floor);
+	mlx_delete_image(map->mlx, map->images->cllt);
+	free(map->images);
+	free(map->texture);
+	free_pointer(map->map);
+	mlx_close_window(map->mlx);
+	exit(0);
 }

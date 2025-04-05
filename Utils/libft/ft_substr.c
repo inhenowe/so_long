@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_substr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aleortiz <aleortiz@student.42malaga.com    +#+  +:+       +#+        */
+/*   By: aleortiz <aleortiz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/14 13:08:56 by aleortiz          #+#    #+#             */
-/*   Updated: 2024/12/23 15:57:08 by aleortiz         ###   ########.fr       */
+/*   Updated: 2025/04/04 14:30:26 by aleortiz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,25 +14,22 @@
 
 char	*ft_substr(char const *s, unsigned int start, size_t len)
 {
-	char	*str;
-	char	*substr;
+	size_t	len_s;
+	size_t	sub_len;
+	char	*s2;
 
-	str = (char *)s;
-	if ((((unsigned int)ft_strlen(str) < start)))
-	{
-		substr = (char *)ft_calloc(1, 1);
-		if (!substr)
-			return ((void *)0);
-		return (substr);
-	}
-	if ((len > (unsigned int) ft_strlen(str) - start))
-		len = (unsigned int) ft_strlen(str) - start;
-	substr = (char *)ft_calloc(1, len + 1);
-	if (!substr)
-		return ((void *)0);
-	substr[len] = '\0';
-	if (!substr || !s)
-		return ((void *)0);
-	ft_memcpy(substr, str + start, len);
-	return (substr);
+	if (s == NULL)
+		return (NULL);
+	len_s = ft_strlen((char *)s);
+	if (start >= len_s)
+		return (ft_strdup(""));
+	sub_len = len;
+	if (start + sub_len > len_s)
+		sub_len = len_s - start;
+	s2 = (char *)malloc((sub_len + 1) * sizeof(char));
+	if (s2 == NULL)
+		return (NULL);
+	ft_strlcpy(s2, s + start, sub_len + 1);
+	s2[sub_len] = '\0';
+	return (s2);
 }

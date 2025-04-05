@@ -6,7 +6,7 @@
 /*   By: aleortiz <aleortiz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/25 18:28:50 by aleortiz          #+#    #+#             */
-/*   Updated: 2025/04/01 19:27:05 by aleortiz         ###   ########.fr       */
+/*   Updated: 2025/04/04 13:23:24 by aleortiz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ static void	compare(char c, t_map *map, int i, int j)
 		map->exit++;
 	if (c == 'C')
 		map->collect++;
-	if (c != 'C' && c != 'E' && c != 'P' && c != '0' && c != '1' && c != '\n')
+	if (c != 'C' && c != 'E' && c != 'P' && c != '0' && c != '1')
 		map->unech++;
 }
 
@@ -42,9 +42,9 @@ static t_bool	charge_map(t_map *map, char *path)
 	{
 		aux = get_next_line(fd);
 		if (aux)
-			if ((ft_strlen(aux) != map->x_max))
+			if ((ft_strlen(aux) - 1 != map->x_max))
 				return (TRUE);
-		map->map[i] = ft_strdup(aux);
+		map->map[i] = ft_substr(aux, 0, ft_strlen(aux) - 1);
 		free(aux);
 		i++;
 	}
@@ -59,7 +59,7 @@ static t_bool	readmap(int fd, t_map *map)
 
 	check = FALSE;
 	line = get_next_line(fd);
-	map->x_max = ft_strlen(line);
+	map->x_max = ft_strlen(line) - 1;
 	while (line)
 	{
 		map->y_max++;

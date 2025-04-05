@@ -6,7 +6,7 @@
 /*   By: aleortiz <aleortiz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/31 16:11:44 by aleortiz          #+#    #+#             */
-/*   Updated: 2025/04/01 19:27:08 by aleortiz         ###   ########.fr       */
+/*   Updated: 2025/04/04 13:23:00 by aleortiz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,11 +75,11 @@ static void	is_winnable(char **prove, t_map *map)
 }
 void	is_close(t_map *map, int i, int j)
 {
-	while (++j < map->x_max - 1 && map->map[0][j])
+	while (++j < map->x_max && map->map[0][j])
 		if (map->map[0][j] != '1' || map->map[map->y_max - 1][j] != '1')
 			map->error = TRUE;
 	while (++i <= map->y_max - 1 && map->map[i])
-		if (map->map[i][0] != '1' || map->map[i][map->x_max - 2] != '1')
+		if (map->map[i][0] != '1' || map->map[i][map->x_max - 1] != '1')
 			map->error = TRUE;
 }
 

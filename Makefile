@@ -6,7 +6,7 @@
 #    By: aleortiz <aleortiz@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/03/25 16:33:40 by aleortiz          #+#    #+#              #
-#    Updated: 2025/04/01 18:50:42 by aleortiz         ###   ########.fr        #
+#    Updated: 2025/04/04 14:37:22 by aleortiz         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -39,13 +39,13 @@ LIB42 = $(UTILS)/libft.a
 
 # Archivos fuente y crear objetos   ====================#
 FILES = $(addprefix $(SRC)/,main.c\
-													Utilities.c\
-													Utilities_2.c\
-													load_images.c\
-													first_cheking.c\
-													key_buildings.c\
-													error_check_free.c\
-													read_and_checkmap.c)
+							Utilities.c\
+							Utilities_2.c\
+							load_images.c\
+							first_cheking.c\
+							key_buildings.c\
+							error_check_free.c\
+							read_and_checkmap.c)
 OBJS = $(addprefix $(RMDIR)/, $(notdir $(FILES:.c=.o)))
 #=======================================================#
 
